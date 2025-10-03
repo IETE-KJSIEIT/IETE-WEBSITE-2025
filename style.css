@@ -2459,20 +2459,9 @@ body {
 
 .marquee-track {
     display: flex;
-    animation: marquee 30s linear infinite;
     gap: 2rem;
-    width: 200%; /* Double width to accommodate duplicates */
-}
-
-/* Mobile Marquee Optimization */
-@media (max-width: 768px) {
-    .marquee-track {
-        animation: marquee-mobile 15s linear infinite;
-    }
-}
-
-.marquee-track:hover {
-    animation-play-state: paused;
+    width: max-content; /* Adjust to content width */
+    will-change: transform; /* Optimize for smooth animations */
 }
 
 /* Infinite Marquee Animation */
@@ -2867,21 +2856,10 @@ body {
 
 .sponsors-marquee-track {
     display: flex;
-    animation: sponsorsMarquee 45s linear infinite;
     gap: 2rem;
     align-items: center;
-    width: 200%;
-}
-
-/* Mobile Sponsors Marquee Optimization */
-@media (max-width: 768px) {
-    .sponsors-marquee-track {
-        animation: sponsorsMarquee-mobile 20s linear infinite;
-    }
-}
-
-.sponsors-marquee-track:hover {
-    animation-play-state: paused;
+    width: max-content;
+    will-change: transform; /* Optimize for smooth animations */
 }
 
 @keyframes sponsorsMarquee {
@@ -3347,33 +3325,23 @@ body {
                 0 0 20px rgba(30, 144, 255, 0.4);
 }
 
-/* Subcore Team Marquee - Clean Implementation */
+/* Subcore Team Marquee - Clean Implementation with Cursor Control */
 .subcore-marquee-container {
     width: 100%;
     overflow: hidden;
     position: relative;
     margin: 2rem 0;
     min-height: 300px; /* Minimum height, can grow with content */
+    cursor: default;
 }
 
 .subcore-marquee-track {
     display: flex;
-    animation: subcore-marquee 30s linear infinite;
     gap: 2rem;
     min-height: 100%;
     align-items: flex-start; /* Align to top instead of center */
-    width: 200%; /* Double width to accommodate duplicates */
-}
-
-/* Mobile Subcore Marquee Optimization */
-@media (max-width: 768px) {
-    .subcore-marquee-track {
-        animation: subcore-marquee-mobile 15s linear infinite;
-    }
-}
-
-.subcore-marquee-track:hover {
-    animation-play-state: paused;
+    width: max-content; /* Adjust to content width */
+    will-change: transform; /* Optimize for smooth animations */
 }
 
 @keyframes subcore-marquee {

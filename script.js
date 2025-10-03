@@ -250,16 +250,131 @@ document.addEventListener('DOMContentLoaded', () => {
         const marqueeContainers = document.querySelectorAll('.marquee-container, .subcore-marquee-container, .sponsors-marquee-container');
         marqueeContainers.forEach(container => {
             const track = container.querySelector('.marquee-track, .subcore-marquee-track, .sponsors-marquee-track');
-            
-            // Pause on hover
-            container.addEventListener('mouseenter', () => {
-                if (track) track.style.animationPlayState = 'paused';
-            });
-            
-            container.addEventListener('mouseleave', () => {
-                if (track) track.style.animationPlayState = 'running';
-            });
-            
+            const isSubcoreMarquee = container.classList.contains('subcore-marquee-container');
+            const isSponsorsMarquee = container.classList.contains('sponsors-marquee-container');
+            const isTeamGroupsMarquee = container.classList.contains('marquee-container');
+
+            if (isSubcoreMarquee || isSponsorsMarquee || isTeamGroupsMarquee) {
+                if (!track) return;
+
+                // Cursor-based scrolling for subcore team and sponsors sections
+                let targetScrollSpeed = 0;
+                let currentScrollSpeed = 0;
+                let currentTranslate = 0;
+                let animationFrameId = null;
+                let isHovering = false;
+                const smoothingFactor = 0.15; // Lower = smoother but slower response
+                const maxSpeed = 3; // Maximum pixels per frame
+                const autoScrollSpeed = 0.5; // Auto-scroll speed when not hovering
+
+                // Calculate the width of half the track (one set of cards)
+                const trackWidth = track.scrollWidth / 2; // Divide by 2 because cards are duplicated
+
+                const smoothScroll = () => {
+                    if (isHovering) {
+                        // Manual control when hovering
+                        currentScrollSpeed += (targetScrollSpeed - currentScrollSpeed) * smoothingFactor;
+                    } else {
+                        // Auto-scroll when not hovering
+                        currentScrollSpeed = -autoScrollSpeed;
+                    }
+
+                    // Apply scroll
+                    currentTranslate += currentScrollSpeed;
+
+                    // Infinite loop logic
+                    if (currentTranslate > 0) {
+                        // Scrolled too far right, loop back
+                        currentTranslate = -trackWidth;
+                    } else if (currentTranslate < -trackWidth) {
+                        // Scrolled too far left, loop back
+                        currentTranslate = 0;
+                    }
+
+                    track.style.transform = `translateX(${currentTranslate}px)`;
+                    animationFrameId = requestAnimationFrame(smoothScroll);
+                };
+
+                // Start the auto-scroll immediately
+                animationFrameId = requestAnimationFrame(smoothScroll);
+
+                container.addEventListener('mouseenter', () => {
+                    isHovering = true;
+                    // Keep current position, just switch to manual control
+                });
+
+                container.addEventListener('mousemove', (e) => {
+                    const rect = container.getBoundingClientRect();
+                    const containerWidth = rect.width;
+                    const mouseX = e.clientX - rect.left;
+                    const edgeZone = containerWidth * 0.25; // 25% from each edge
+
+                    if (mouseX < edgeZone) {
+                        // Left side - scroll left
+                        const ratio = 1 - (mouseX / edgeZone);
+                        targetScrollSpeed = ratio * maxSpeed;
+                    } else if (mouseX > containerWidth - edgeZone) {
+                        // Right side - scroll right
+                        const ratio = (mouseX - (containerWidth - edgeZone)) / edgeZone;
+                        targetScrollSpeed = -ratio * maxSpeed;
+                    } else {
+                        // Center - no scroll
+                        targetScrollSpeed = 0;
+                    }
+                });
+
+                container.addEventListener('mouseleave', () => {
+                    isHovering = false;
+                    targetScrollSpeed = 0;
+                    // Animation continues automatically in auto-scroll mode
+                });
+
+                // Touch/Swipe support for mobile devices
+                let touchStartX = 0;
+                let touchCurrentX = 0;
+                let isSwiping = false;
+
+                container.addEventListener('touchstart', (e) => {
+                    touchStartX = e.touches[0].clientX;
+                    touchCurrentX = touchStartX;
+                    isSwiping = true;
+                    isHovering = true; // Stop auto-scroll during swipe
+                }, { passive: true });
+
+                container.addEventListener('touchmove', (e) => {
+                    if (!isSwiping) return;
+
+                    touchCurrentX = e.touches[0].clientX;
+                    const deltaX = touchCurrentX - touchStartX;
+
+                    // Set scroll speed based on swipe direction and distance
+                    targetScrollSpeed = deltaX * 0.1; // Swipe sensitivity
+                }, { passive: true });
+
+                container.addEventListener('touchend', () => {
+                    isSwiping = false;
+                    isHovering = false;
+                    targetScrollSpeed = 0;
+                    // Resume auto-scroll
+                });
+
+                container.addEventListener('touchcancel', () => {
+                    isSwiping = false;
+                    isHovering = false;
+                    targetScrollSpeed = 0;
+                    // Resume auto-scroll
+                });
+            } else {
+                // Standard pause/resume for other marquees
+                container.addEventListener('mouseenter', () => {
+                    if (track) track.style.animationPlayState = 'paused';
+                });
+
+                container.addEventListener('mouseleave', () => {
+                    if (track) track.style.animationPlayState = 'running';
+                });
+            }
+
             // Add click to focus on specific card
             const cards = container.querySelectorAll('.team-group-card, .subcore-card, .sponsor-card');
             cards.forEach((card, index) => {
@@ -267,7 +382,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Add a highlight effect
                     cards.forEach(c => c.classList.remove('highlighted'));
                     card.classList.add('highlighted');
-                    
+
                     // Remove highlight after 3 seconds
                     setTimeout(() => {
                         card.classList.remove('highlighted');
