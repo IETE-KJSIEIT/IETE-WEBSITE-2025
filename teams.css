@@ -1,0 +1,37 @@
+.team-card {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.team-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+.team-card-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.team-card-content {
+    padding: 1.5rem;
+}
+
+.team-card-content h4 {
+    font-family: var(--font-header);
+    font-size: 1.5rem;
+    color: var(--accent-blue);
+    margin-bottom: 0.5rem;
+}
+
+.team-card-content p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+/* Social links removed - no longer needed */

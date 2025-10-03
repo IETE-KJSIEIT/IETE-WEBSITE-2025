@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IETE KJSIT - The Official Hub</title>
+
+    <meta name="description" content="The official website for the IETE Technical Committee at KJSIT. Explore our events, meet the team, and join our community of innovators.">
+    <meta name="keywords" content="IETE, KJSIT, TechFest, Renaissance, Engineering, Technology, Events, Workshops">
+    <meta name="author" content="IETE KJSIT Team">
+    
+    <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Goldman:wght@700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome removed - no longer needed -->
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cyberpunk-effects.css">
+    <link rel="stylesheet" href="teams.css">
+
+</head>
+<body class="crt-effect">
+
+    <div id="transition-overlay" class="fixed top-0 left-0 w-full h-full bg-[var(--accent-blue)] z-[100] pointer-events-none"></div>
+
+    <div id="splash-screen" class="splash-screen fixed top-0 left-0 w-full h-full bg-[var(--bg-base)] flex flex-col items-center justify-center z-50">
+        <div class="flex flex-col items-center">
+            <h1 class="reveal-text text-6xl md:text-8xl font-bold tracking-wider mb-4 text-[var(--text-dark)]">
+                <span style="animation-delay: 0.2s;">IETE</span>
+                <span style="animation-delay: 0.4s;">KJSIT</span>
+            </h1>
+            <p id="loading-percentage" class="text-lg font-medium mb-4 text-gray-300" style="font-family: var(--font-header);">0%</p>
+            <div class="w-48 h-1 bg-gray-200 rounded-full overflow-hidden">
+                <div id="progress-bar" class="h-full" style="background: var(--accent-neon); transform: scaleX(0);"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="three-canvas-container" class="fixed top-0 left-0 w-full h-full z-0 opacity-0 transition-opacity duration-1000"></div>
+
+    <!-- Navigation Bar -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-300">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="navbar-logo-container">
+                        <a href="https://ietekjsit.in/" target="_blank" rel="noopener noreferrer">
+                            <img src="assets/images/IETE_Logo.png" alt="IETE Logo" class="navbar-logo">
+                        </a>
+                    </div>
+                    <a href="#welcome-screen" class="text-2xl font-bold neon-text-orange" style="font-family: var(--font-display);">
+                        IETE KJSIT
+                    </a>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#renaissance" class="nav-link">Renaissance</a>
+                    <a href="#events" class="nav-link">Events</a>
+                    <a href="#team" class="nav-link">Team</a>
+                    <a href="#about-us" class="nav-link">About</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="hamburger-btn">
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                        <span class="hamburger-line"></span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Navigation -->
+            <div id="mobile-menu" class="mobile-menu">
+                <div class="mobile-menu-content">
+                    <a href="#renaissance" class="mobile-nav-link">Renaissance</a>
+                    <a href="#events" class="mobile-nav-link">Events</a>
+                    <a href="#team" class="mobile-nav-link">Team</a>
+                    <a href="#about-us" class="mobile-nav-link">About</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="content-container" class="relative z-10 opacity-0 transition-opacity duration-500">
+        
+        <section id="welcome-screen" class="h-screen relative flex items-center justify-center text-center page-section overflow-hidden">
+            <!-- Animated Background Elements -->
+            <div class="hero-background">
+                <div class="floating-particles">
+                    <div class="particle particle-1"></div>
+                    <div class="particle particle-2"></div>
+                    <div class="particle particle-3"></div>
+                    <div class="particle particle-4"></div>
+                    <div class="particle particle-5"></div>
+                </div>
+                <div class="grid-overlay"></div>
+            </div>
+
+             <!-- Main Hero Content -->
+             <div class="welcome-text-container relative z-10">
+                 <!-- Logo Section -->
+                 <div class="hero-logos mb-8">
+                     <div class="logo-container">
+                         <div class="logo-circle">
+                             <img src="assets/images/IETE_Logo.png" alt="IETE Logo" class="logo-image">
+                         </div>
+                         <div class="logo-x">×</div>
+                         <div class="logo-circle">
+                             <img src="assets/images/KJSIT Logo.jpg" alt="KJSIT Logo" class="logo-image">
+                         </div>
+                     </div>
+                 </div>
+                 
+                <div class="welcome-line">
+                     <h1 class="text-5xl md:text-8xl glitch neon-text-blue" style="font-family: var(--font-display);" data-text="WELCOME TO">WELCOME TO</h1>
+                </div>
+                <div class="welcome-line">
+                     <h1 class="text-5xl md:text-8xl glitch neon-text-blue" style="font-family: var(--font-display);" data-text="IETE KJSIT">IETE KJSIT</h1>
+                </div>
+
+
+                 <!-- Scroll Indicator -->
+                 <div class="scroll-indicator mt-20">
+                     <div class="scroll-arrow">
+                         <div class="scroll-line"></div>
+                         <div class="scroll-text">Scroll Down</div>
+                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="introduction" class="min-h-screen p-8 bg-[var(--bg-base)] relative flex items-center justify-center page-section">
+            <div class="text-center max-w-3xl mx-auto">
+                 <h2 class="intro-element text-4xl md:text-6xl mb-6 neon-text-blue" style="font-family: var(--font-header);">
+                    Where Innovation Converges
+                </h2>
+                <p class="intro-element text-lg md:text-xl mb-12 leading-relaxed">
+                    We are the IETE Student Chapter of KJSIT—a nexus for creators, thinkers, and pioneers. We transcend the conventional, pushing the boundaries of technology and engineering to build a smarter tomorrow. This is our digital hub.
+                </p>
+                <a href="#renaissance" class="intro-element cyber-btn">
+                    Explore Our World
+                </a>
+            </div>
+        </section>
+
+        <section id="renaissance" class="min-h-screen py-20 px-8 bg-[var(--bg-base)] relative page-section">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl md:text-6xl" style="font-family: var(--font-header);">
+                    Renaissance 2025
+                </h2>
+                <p class="renaissance-element text-xl md:text-2xl mt-2 mb-8 text-[var(--accent-blue)]" style="font-family: var(--font-body);">
+                    IETE KJSIT's Arena of Innovation
+                </p>
+        
+                <p class="renaissance-element text-lg max-w-3xl mx-auto leading-relaxed mb-16">
+                    Get ready to plug in! For this year's annual tech festival, IETE KJSIT is unleashing a supercharged lineup of events. We're transforming Renaissance into a battleground of brilliance where code meets creativity. Whether you're here to conquer complex circuits or outsmart the competition in challenges of pure wit, we've built an arena for you. The future is calling—are you ready to answer?
+                </p>
+        
+                <div class="renaissance-element">
+                    <div class="renaissance-image-container mb-12 flex justify-center">
+                        <img src="assets/images/events/Renaissance Flyer.jpeg" alt="Renaissance 2025 - IETE KJSIT TechFest" class="renaissance-banner-image max-w-4xl w-full h-auto rounded-lg shadow-2xl">
+                    </div>
+                    <h3 class="text-3xl md:text-4xl text-center my-12 neon-text-orange" style="font-family: var(--font-header);">Technical Events</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                        
+                        <div class="event-card p-6 rounded-lg shadow-lg text-center neon-border-top event-card-hover">
+                            <div class="event-logo-container mb-4 flex justify-center">
+                                <img src="assets/images/Renaissance events/DeCodex.png" alt="DeCodeX Logo" class="event-logo w-48 h-48 object-contain">
+                            </div>
+                            <h4 class="text-2xl mb-4" style="font-family: var(--font-header);">DeCodeX</h4>
+                            <div class="event-details">
+                                <p class="text-gray-300 mb-4" style="font-family: var(--font-body);">Think backward in coding! Given only the output, reconstruct the program that produces it within a time limit. Test your logic and creativity.</p>
+                                <a href="https://forms.gle/kkgfVnUFFU7a7Z1W9" target="_blank" class="cyber-btn-register inline-block">Register Now</a>
+                            </div>
+                        </div>
+        
+                        <div class="event-card p-6 rounded-lg shadow-lg text-center neon-border-top event-card-hover">
+                            <div class="event-logo-container mb-4 flex justify-center">
+                                <img src="assets/images/Renaissance events/Prompt Showdown.png" alt="Prompt Showdown Logo" class="event-logo w-48 h-48 object-contain">
+                            </div>
+                            <h4 class="text-2xl mb-4" style="font-family: var(--font-header);">Prompt Showdown</h4>
+                            <div class="event-details">
+                                <p class="text-gray-300 mb-4" style="font-family: var(--font-body);">AI vs AI challenge! Use ChatGPT and other AI tools to create the best response to random problems. Craft better prompts, win the showdown.</p>
+                                <a href="https://forms.gle/YrT4C6cT4ykRQAak8" target="_blank" class="cyber-btn-register inline-block">Register Now</a>
+                            </div>
+                        </div>
+        
+                        <div class="event-card p-6 rounded-lg shadow-lg text-center neon-border-top event-card-hover">
+                            <div class="event-logo-container mb-4 flex justify-center">
+                                <img src="assets/images/Renaissance events/Digital Sherlock.png" alt="Digital Sherlock Logo" class="event-logo w-48 h-48 object-contain">
+                            </div>
+                            <h4 class="text-2xl mb-4" style="font-family: var(--font-header);">Digital Sherlock</h4>
+                            <div class="event-details">
+                                <p class="text-gray-300 mb-4" style="font-family: var(--font-body);">Become a cyber detective! Solve digital mysteries by uncovering hidden clues in emails, images, websites, and QR codes. Crack the case!</p>
+                                <a href="https://forms.gle/37HAqEp5dLay6bkm9" target="_blank" class="cyber-btn-register inline-block">Register Now</a>
+                            </div>
+                        </div>
+        
+                        <div class="event-card p-6 rounded-lg shadow-lg text-center neon-border-top event-card-hover">
+                            <div class="event-logo-container mb-4 flex justify-center">
+                                <img src="assets/images/Renaissance events/Code Golf.png" alt="Code Golf Logo" class="event-logo w-48 h-48 object-contain">
+                            </div>
+                            <h4 class="text-2xl mb-4" style="font-family: var(--font-header);">Code Golf</h4>
+                            <div class="event-details">
+                                <p class="text-gray-300 mb-4" style="font-family: var(--font-body);">The sport of concise programming! Write the shortest code to solve problems. Fewest characters wins. Compete solo or in teams of up to 4.</p>
+                                <a href="https://forms.gle/MPTE9dNT4bMh2ebz9" target="_blank" class="cyber-btn-register inline-block">Register Now</a>
+                            </div>
+                        </div>
+        
+                    </div>
+                </div>
+        
+                <div class="renaissance-element">
+                     <h3 class="text-3xl md:text-4xl text-center my-12 neon-text-blue" style="font-family: var(--font-header);">Non-Technical Events</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        
+                        <div class="event-card p-6 rounded-lg shadow-lg text-center neon-border-top-blue event-card-hover">
+                            <div class="event-logo-container mb-4 flex justify-center">
+                                <img src="assets/images/Renaissance events/IPL Auction.png" alt="IPL Logo" class="event-logo w-48 h-48 object-contain">
+                            </div>
+                            <h4 class="text-2xl mb-4" style="font-family: var(--font-header);">IPL</h4>
+                            <div class="event-details">
+                                <p class="text-gray-300 mb-4" style="font-family: var(--font-body);">Step into the shoes of a franchise owner! Strategize and bid to assemble your dream team in this thrilling cricket auction simulation.</p>
+                                <a href="https://forms.gle/QgfYXgzEkVjNoU3L9" target="_blank" class="cyber-btn-register-blue inline-block">Register Now</a>
+                            </div>
+                        </div>
+                        
+                        <div class="event-card p-6 rounded-lg shadow-lg text-center neon-border-top-blue event-card-hover">
+                            <div class="event-logo-container mb-4 flex justify-center">
+                                <img src="assets/images/Renaissance events/PS5.png" alt="FIFA & F1 PS5 Logo" class="event-logo w-48 h-48 object-contain">
+                            </div>
+                            <h4 class="text-2xl mb-4" style="font-family: var(--font-header);">FIFA & F1 on PS5</h4>
+                            <div class="event-details">
+                                <p class="text-gray-300 mb-4" style="font-family: var(--font-body);">In this tournament, players battle head-to-head in FIFA and F1 on PS5, showcasing reflexes, tactics, and focus. The event captures the thrill of Sports in its modern avatar.</p>
+                                <a href="https://forms.gle/Vfk6wK8QTR7v9N8SA" target="_blank" class="cyber-btn-register-blue inline-block">Register Now</a>
+                            </div>
+                        </div>
+        
+                        <div class="event-card p-6 rounded-lg shadow-lg text-center neon-border-top-blue event-card-hover">
+                            <div class="event-logo-container mb-4 flex justify-center">
+                                <img src="assets/images/Renaissance events/Alice in Borderland.png" alt="Alice in Borderland Logo" class="event-logo w-48 h-48 object-contain">
+                            </div>
+                            <h4 class="text-2xl mb-4" style="font-family: var(--font-header);">Alice in Borderland</h4>
+                            <div class="event-details">
+                                <p class="text-gray-300 mb-4" style="font-family: var(--font-body);">Enter a world of high-stakes games: <br>
+                                <strong>Blindfolded Maze:</strong> Navigate a maze guided only by your teammate's voice. <br>
+                                    <strong>Mafia:</strong> Uncover the hidden mafia using wit and strategy. <br>
+                                    <strong>Housie:</strong> Classic game of luck and patterns. <br>
+                                    <strong>Geometric Dumb Charades:</strong> Act out geometric terms without speaking.
+                                </p>
+                                <a href="https://forms.gle/uP17Vcah9DDj2jiq6" target="_blank" class="cyber-btn-register-blue inline-block">Register Now</a>
+                            </div>
+                        </div>
+                        
+                        <div class="event-card p-6 rounded-lg shadow-lg text-center neon-border-top-blue event-card-hover">
+                            <div class="event-logo-container mb-4 flex justify-center">
+                                <img src="assets/images/Renaissance events/Social Buzz.png" alt="Social Buzz Logo" class="event-logo w-48 h-48 object-contain">
+                            </div>
+                            <h4 class="text-2xl mb-4" style="font-family: var(--font-header);">SOCIAL BUZZ</h4>
+                            <div class="event-details">
+                                <p class="text-gray-300 mb-4" style="font-family: var(--font-body);">Three social media challenges: <br>
+                                    <strong>Reel-O-Mania:</strong> Create viral 15-30 second reels using mystery objects. <br>
+                                    <strong>Aamchi Mumbai:</strong> Rapid-fire quiz about the city of dreams. <br>
+                                    <strong>Memologic:</strong> Answer situations with the best fitting meme.
+                                </p>
+                                <a href="https://forms.gle/V1g6xHrNo6RBsWRG7" target="_blank" class="cyber-btn-register-blue inline-block">Register Now</a>
+                            </div>
+                        </div>
+        
+                    </div>
+                </div>
+            </div>
+        </section>
+    <section id="events" class="min-h-screen p-8 bg-[var(--bg-base)] relative page-section">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl md:text-6xl mb-16" style="font-family: var(--font-header);">
+                    Our Events
+                </h2>
+                
+                <!-- Oscillations Section -->
+                <div class="oscillations-section mb-20">
+                    <div class="oscillations-header mb-12">
+                        <h3 class="text-3xl md:text-4xl mb-6 neon-text-orange" style="font-family: var(--font-header);">
+                            Oscillations
+                        </h3>
+                        <p class="text-xl text-gray-300 mb-8 max-w-4xl mx-auto" style="font-family: var(--font-body);">
+                            Our flagship annual technical festival conducted under the esteemed guidelines of IETE-Mumbai
+                        </p>
+                    </div>
+                    
+                    <div class="oscillations-content max-w-6xl mx-auto mb-16">
+                        <div class="oscillations-info mb-12">
+                            <h4 class="text-2xl mb-6 neon-text-blue text-center" style="font-family: var(--font-header);">About Oscillations</h4>
+                            <div class="space-y-4 text-center max-w-4xl mx-auto">
+                                <p class="text-gray-300" style="font-family: var(--font-body);">
+                                    <strong>Oscillations</strong> is IETE KJSIT's premier annual technical festival, conducted under the esteemed guidelines of IETE-India. This flagship event represents the pinnacle of technical excellence and innovation in our institution.
+                                </p>
+                                <p class="text-gray-300" style="font-family: var(--font-body);">
+                                    The festival serves as a platform for students to showcase their technical prowess, participate in cutting-edge competitions, and engage with industry experts and academic luminaries.
+                                </p>
+                                <p class="text-gray-300" style="font-family: var(--font-body);">
+                                    Under the guidance of IETE-India, Oscillations maintains the highest standards of technical education and provides participants with opportunities to explore emerging technologies, develop practical skills, and network with like-minded innovators.
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <!-- ISF Award Section -->
+                        <div class="isf-award-section mb-16">
+                            <div class="award-content text-center">
+                                <h4 class="text-2xl mb-6 neon-text-orange" style="font-family: var(--font-header);">🏆 Achievement Unlocked</h4>
+                                <div class="award-description mb-8">
+                                    <p class="text-xl text-gray-300 mb-4" style="font-family: var(--font-body);">
+                                        <strong>3rd Best ISF in Mumbai</strong>
+                                    </p>
+                                    <p class="text-lg text-gray-300" style="font-family: var(--font-body);">
+                                        Awarded by IETE-India for our outstanding contribution to technical education and innovation by Conduction of Oscillations 2025
+                                    </p>
+                                </div>
+                                <div class="award-image-container">
+                                    <img src="assets/images/events/Oscillations/3rd Best ISF.jpeg" alt="3rd Best ISF Award - IETE KJSIT" class="w-full rounded-lg shadow-2xl">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="oscillations-events">
+                            <h4 class="text-2xl mb-8 neon-text-blue text-center" style="font-family: var(--font-header);">This Year's   Oscillations Events</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                                
+                                <div class="oscillations-event-card p-6 rounded-lg shadow-lg text-center">
+                                    <div class="oscillations-event-image mb-4">
+                                        <img src="assets/images/events/Oscillations/Code Housie.jpeg" alt="Code Housie" class="w-full h-48 object-cover rounded-lg">
+                                    </div>
+                                    <h5 class="text-xl font-bold mb-2" style="font-family: var(--font-header);">Code Housie</h5>
+                                    <p class="text-gray-300" style="font-family: var(--font-body);">A unique coding competition combining traditional housie with programming challenges.</p>
+                                </div>
+
+                                <div class="oscillations-event-card p-6 rounded-lg shadow-lg text-center">
+                                    <div class="oscillations-event-image mb-4">
+                                        <img src="assets/images/events/Oscillations/IPL Auction.jpeg" alt="IPL Auction" class="w-full h-48 object-cover rounded-lg">
+                                    </div>
+                                    <h5 class="text-xl font-bold mb-2" style="font-family: var(--font-header);">IPL Auction</h5>
+                                    <p class="text-gray-300" style="font-family: var(--font-body);">Strategic bidding competition simulating the excitement of IPL player auctions.</p>
+                                </div>
+
+                                <div class="oscillations-event-card p-6 rounded-lg shadow-lg text-center">
+                                    <div class="oscillations-event-image mb-4">
+                                        <img src="assets/images/events/Oscillations/PS.jpeg" alt="PS5" class="w-full h-48 object-cover rounded-lg">
+                                    </div>
+                                    <h5 class="text-xl font-bold mb-2" style="font-family: var(--font-header);">PS5</h5>
+                                    <p class="text-gray-300" style="font-family: var(--font-body);">Gaming tournament featuring high-performance PS5 hardware and competitive esports.</p>
+                                </div>
+
+                                <div class="oscillations-event-card p-6 rounded-lg shadow-lg text-center">
+                                    <div class="oscillations-event-image mb-4">
+                                        <img src="assets/images/events/Oscillations/Techno Tinker.jpeg" alt="Techno Tinker" class="w-full h-48 object-cover rounded-lg">
+                                    </div>
+                                    <h5 class="text-xl font-bold mb-2" style="font-family: var(--font-header);">Techno Tinker</h5>
+                                    <p class="text-gray-300" style="font-family: var(--font-body);">Hardware tinkering and innovation competition for tech enthusiasts.</p>
+                                </div>
+
+                                <div class="oscillations-event-card p-6 rounded-lg shadow-lg text-center">
+                                    <div class="oscillations-event-image mb-4">
+                                        <img src="assets/images/events/Oscillations/Squid Games.jpeg" alt="Squid Games" class="w-full h-48 object-cover rounded-lg">
+                                    </div>
+                                    <h5 class="text-xl font-bold mb-2" style="font-family: var(--font-header);">Squid Games</h5>
+                                    <p class="text-gray-300" style="font-family: var(--font-body);">Intense survival-based technical challenges inspired by the popular series.</p>
+                                </div>
+
+                                <div class="oscillations-event-card p-6 rounded-lg shadow-lg text-center">
+                                    <div class="oscillations-event-image mb-4">
+                                        <img src="assets/images/events/Oscillations/CTF.jpeg" alt="CTF" class="w-full h-48 object-cover rounded-lg">
+                                    </div>
+                                    <h5 class="text-xl font-bold mb-2" style="font-family: var(--font-header);">CTF</h5>
+                                    <p class="text-gray-300" style="font-family: var(--font-body);">Capture The Flag - A thrilling non-technical sports event combining strategy, teamwork, and physical challenges.</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Past Events Section -->
+                <div class="past-events-section">
+                    <h3 class="text-3xl md:text-4xl mb-12 neon-text-blue" style="font-family: var(--font-header);">
+                        Past Events & Workshops
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+                        
+                        <div class="past-event-card p-8 rounded-lg shadow-lg text-center">
+                            <div class="past-event-image mb-6">
+                                <img src="assets/images/events/other events/Hackathon.jpg" alt="Hackathon" class="w-full h-64 object-cover rounded-lg">
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3" style="font-family: var(--font-header);">Hackathon</h3>
+                            <p class="text-gray-300 text-lg" style="font-family: var(--font-body);">Intensive coding competition where participants build innovative solutions within a limited timeframe.</p>
+                        </div>
+
+                        <div class="past-event-card p-8 rounded-lg shadow-lg text-center">
+                            <div class="past-event-image mb-6">
+                                <img src="assets/images/events/other events/HP Gaming Event.jpeg" alt="HP Gaming Event" class="w-full h-64 object-cover rounded-lg">
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3" style="font-family: var(--font-header);">HP Gaming Event</h3>
+                            <p class="text-gray-300 text-lg" style="font-family: var(--font-body);">Gaming tournament featuring high-performance HP hardware and competitive esports.</p>
+                        </div>
+
+                        <div class="past-event-card bmc-accent-card p-8 rounded-lg shadow-lg text-center">
+                            <div class="past-event-image mb-6 gleam-container">
+                                <img src="assets/images/events/other events/Workshop at BMC School.jpeg" alt="Workshop at BMC School" class="w-full h-64 object-cover rounded-lg gleam-image">
+                                <div class="gleam-effect"></div>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 bmc-accent-title" style="font-family: var(--font-header);">Workshop at BMC School</h3>
+                            <p class="text-gray-300 text-lg bmc-accent-text" style="font-family: var(--font-body);">Educational outreach program bringing technology workshops to BMC School students.</p>
+                        </div>
+
+                        <div class="past-event-card bmc-accent-card p-8 rounded-lg shadow-lg text-center">
+                            <div class="past-event-image mb-6 gleam-container">
+                                <img src="assets/images/events/other events/BMC School Visit.jpeg" alt="BMC School Visit" class="w-full h-64 object-cover rounded-lg gleam-image">
+                                <div class="gleam-effect"></div>
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3 bmc-accent-title" style="font-family: var(--font-header);">BMC School Visit</h3>
+                            <p class="text-gray-300 text-lg bmc-accent-text" style="font-family: var(--font-body);">Community engagement initiative visiting BMC School to inspire young minds with technology.</p>
+                        </div>
+
+                        <div class="past-event-card p-8 rounded-lg shadow-lg text-center">
+                            <div class="past-event-image mb-6">
+                                <img src="assets/images/events/other events/SnapAR Workshop.jpeg" alt="SnapAR Workshop" class="w-full h-64 object-cover rounded-lg">
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3" style="font-family: var(--font-header);">SnapAR Workshop</h3>
+                            <p class="text-gray-300 text-lg" style="font-family: var(--font-body);">Hands-on workshop exploring augmented reality development with SnapAR technology.</p>
+                        </div>
+
+                        <div class="past-event-card p-8 rounded-lg shadow-lg text-center">
+                            <div class="past-event-image mb-6">
+                                <img src="assets/images/events/other events/Arduino Workshop.jpeg" alt="Arduino Workshop" class="w-full h-64 object-cover rounded-lg">
+                            </div>
+                            <h3 class="text-2xl font-bold mb-3" style="font-family: var(--font-header);">Arduino Workshop</h3>
+                            <p class="text-gray-300 text-lg" style="font-family: var(--font-body);">Interactive workshop on Arduino programming and embedded systems development.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="team" class="min-h-screen py-20 px-8 bg-[var(--bg-base)] relative page-section">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl md:text-6xl mb-16" style="font-family: var(--font-header);">
+                    Meet The Team
+                </h2>
+        
+                <!-- Leadership Section -->
+                <div class="leadership-container mb-16">
+                    <div class="leadership-grid">
+                        <!-- CP Card on Left -->
+                        <div class="team-card cp-card neon-border-orange">
+                        <div class="team-card-image">
+                                <img src="assets/images/Core/Chairperson.jpeg" alt="Manjiri Kadam - Chairperson">
+                            </div>
+                            <div class="team-card-content">
+                                <h4>Manjiri Kadam</h4>
+                                <p>Chairperson</p>
+                            </div>
+                        </div>
+
+                        <!-- VCP Card on Right -->
+                        <div class="team-card vcp-card neon-border-blue">
+                            <div class="team-card-image">
+                                <img src="assets/images/Core/Vice-Chairperson.jpeg" alt="Kislay Gupta - Vice Chairperson">
+                        </div>
+                        <div class="team-card-content">
+                                <h4>Kislay Gupta</h4>
+                                <p>Vice Chairperson</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Core Team Section -->
+                <div class="core-team-section">
+                    <h3 class="text-3xl md:text-4xl mb-12" style="font-family: var(--font-header); color: var(--accent-blue);">
+                        Core Team
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        
+                        <div class="team-card">
+                            <div class="team-card-image">
+                                <img src="assets/images/Core/Secretary.jpeg" alt="Aaditi Indamdar - Secretary">
+                            </div>
+                            <div class="team-card-content">
+                                 <h4 class="neon-text-orange">Aaditi Indamdar</h4>
+                                <p>Secretary</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                        <div class="team-card-image">
+                                <img src="assets/images/Core/Treasurer.jpeg" alt="Pooja Shah - Treasurer">
+                            </div>
+                            <div class="team-card-content">
+                                 <h4 class="neon-text-orange">Pooja Shah</h4>
+                                <p>Treasurer</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="team-card-image">
+                                <img src="assets/images/Core/DMM.jpeg" alt="Ayesha Shaikh - Digital Media Manager">
+                        </div>
+                        <div class="team-card-content">
+                                 <h4 class="neon-text-orange">Ayesha Shaikh</h4>
+                                <p>Digital Media Manager</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="team-card-image">
+                                <img src="assets/images/Core/CTO.jpeg" alt="Subroto Datta - Chief Technical Officer">
+                            </div>
+                            <div class="team-card-content">
+                                 <h4 class="neon-text-orange">Subroto Datta</h4>
+                                <p>Chief Technical Officer</p>
+                        </div>
+                    </div>
+
+                        <div class="team-card">
+                        <div class="team-card-image">
+                                <img src="assets/images/Core/CEO.jpeg" alt="Sainath Shobhane - Chief Executions Officer">
+                            </div>
+                             <div class="team-card-content">
+                                 <h4 class="neon-text-orange">Sainath Shobhane</h4>
+                                 <p>Chief Executions Officer</p>
+                            </div>
+                        </div>
+
+                        <div class="team-card">
+                            <div class="team-card-image">
+                                <img src="assets/images/Core/PR Officer.jpeg" alt="Pratul Jagtap - Public Relations Officer">
+                        </div>
+                        <div class="team-card-content">
+                                 <h4 class="neon-text-orange">Pratul Jagtap</h4>
+                                 <p>Public Relations Officer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="subcore-team" class="min-h-screen py-20 px-8 bg-[var(--bg-base)] relative page-section">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl md:text-6xl mb-16" style="font-family: var(--font-header);">
+                    Subcore Team
+                </h2>
+        
+                <div class="subcore-marquee-container">
+                    <div class="subcore-marquee-track">
+                        <!-- First set of cards -->
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/Creative Admin.JPG" alt="Creative Admin">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Creative Admin</h4>
+                                <p>Creative Team Lead</p>
+                            </div>
+                        </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/Jt. CTO.JPG" alt="Joint CTO">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Joint CTO</h4>
+                                <p>Technical Team Lead</p>
+                            </div>
+                        </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/Jt. PRO.JPG" alt="Joint PRO">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Joint PRO</h4>
+                                <p>Public Relations Lead</p>
+                            </div>
+                        </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/Jt. Secretary.JPG" alt="Joint Secretary">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Joint Secretary</h4>
+                                <p>Administrative Lead</p>
+                            </div>
+                        </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/Jt. Treasurer.JPG" alt="Joint Treasurer">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Joint Treasurer</h4>
+                                <p>Finance Lead</p>
+                            </div>
+                        </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/Marketing Admin.JPG" alt="Marketing Admin">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Marketing Admin</h4>
+                                <p>Marketing Team Lead</p>
+                            </div>
+                        </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/Organizing Admin.JPG" alt="Organizing Admin">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Organizing Admin</h4>
+                                <p>Event Management Lead</p>
+                            </div>
+                        </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/PR Admin.JPG" alt="PR Admin">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>PR Admin</h4>
+                                <p>Public Relations Admin</p>
+                            </div>
+                        </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/SMM.JPG" alt="Social Media Manager">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Social Media Manager</h4>
+                                <p>Digital Marketing Lead</p>
+                            </div>
+                        </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/Tech Admin.JPG" alt="Tech Admin">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Tech Admin</h4>
+                                <p>Technical Administration Lead</p>
+                            </div>
+                        </div>
+
+                        <!-- Duplicate set for seamless loop -->
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/Creative Admin.JPG" alt="Creative Admin">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Creative Admin</h4>
+                                <p>Creative Team Lead</p>
+                            </div>
+                        </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/Jt. CTO.jpeg" alt="Joint CTO">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Joint CTO</h4>
+                                <p>Technical Team Lead</p>
+                        </div>
+                    </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/Jt. PRO.JPG" alt="Joint PRO">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Joint PRO</h4>
+                                <p>Public Relations Lead</p>
+                            </div>
+                        </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/Jt. Secretary.jpeg" alt="Joint Secretary">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Joint Secretary</h4>
+                                <p>Administrative Lead</p>
+                            </div>
+                        </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/Jt. Treasurer.JPG" alt="Joint Treasurer">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Joint Treasurer</h4>
+                                <p>Finance Lead</p>
+                        </div>
+                    </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/Marketing Admin.JPG" alt="Marketing Admin">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Marketing Admin</h4>
+                                <p>Marketing Team Lead</p>
+                            </div>
+                        </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/Organizing Admin.JPG" alt="Organizing Admin">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Organizing Admin</h4>
+                                <p>Event Management Lead</p>
+                            </div>
+                        </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/PR Admin.JPG" alt="PR Admin">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>PR Admin</h4>
+                                <p>Public Relations Admin</p>
+                        </div>
+                    </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/SMM.JPG" alt="Social Media Manager">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Social Media Manager</h4>
+                                <p>Digital Marketing Lead</p>
+                            </div>
+                        </div>
+
+                        <div class="subcore-card">
+                            <div class="subcore-card-image">
+                                <img src="assets/images/Subcore/Tech Admin.JPG" alt="Tech Admin">
+                            </div>
+                            <div class="subcore-card-content">
+                                <h4>Tech Admin</h4>
+                                <p>Technical Administration Lead</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="team-groups" class="min-h-screen py-20 px-8 bg-[var(--bg-base)] relative page-section">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl md:text-6xl mb-16" style="font-family: var(--font-header);">
+                    Our Teams
+                </h2>
+        
+                <div class="marquee-container">
+                    <div class="marquee-track">
+                        <!-- First set of cards -->
+                        <div class="team-group-card">
+                            <div class="team-group-image">
+                                <img src="assets/images/teams/Creative Team.JPG" alt="Creative Team" class="w-full h-64 object-cover rounded-lg">
+                            </div>
+                            <div class="team-group-content p-6">
+                                <h3 class="text-2xl mb-2" style="font-family: var(--font-header);">Creative Team</h3>
+                                <p class="text-gray-300" style="font-family: var(--font-body);">Designing the future with innovative visuals and creative solutions</p>
+                            </div>
+                        </div>
+
+                        <div class="team-group-card">
+                            <div class="team-group-image">
+                                <img src="assets/images/teams/Marketing Team.JPG" alt="Marketing Team" class="w-full h-64 object-cover rounded-lg">
+                            </div>
+                            <div class="team-group-content p-6">
+                                <h3 class="text-2xl mb-2" style="font-family: var(--font-header);">Marketing Team</h3>
+                                <p class="text-gray-300" style="font-family: var(--font-body);">Spreading our message and building our community presence</p>
+                            </div>
+                        </div>
+
+                        <div class="team-group-card">
+                            <div class="team-group-image">
+                                <img src="assets/images/teams/Organizing Team.JPG" alt="Organizing Team" class="w-full h-64 object-cover rounded-lg">
+                            </div>
+                            <div class="team-group-content p-6">
+                                <h3 class="text-2xl mb-2" style="font-family: var(--font-header);">Organizing Team</h3>
+                                <p class="text-gray-300" style="font-family: var(--font-body);">Making events happen with precision and passion</p>
+                            </div>
+                        </div>
+
+                        <div class="team-group-card">
+                            <div class="team-group-image">
+                                <img src="assets/images/teams/PR Team.JPG" alt="PR Team" class="w-full h-64 object-cover rounded-lg">
+                            </div>
+                            <div class="team-group-content p-6">
+                                <h3 class="text-2xl mb-2" style="font-family: var(--font-header);">PR Team</h3>
+                                <p class="text-gray-300" style="font-family: var(--font-body);">Building relationships and managing our public image</p>
+                            </div>
+                        </div>
+
+                        <div class="team-group-card">
+                            <div class="team-group-image">
+                                <img src="assets/images/teams/Technical Team.JPG" alt="Technical Team" class="w-full h-64 object-cover rounded-lg">
+                            </div>
+                            <div class="team-group-content p-6">
+                                <h3 class="text-2xl mb-2" style="font-family: var(--font-header);">Technical Team</h3>
+                                <p class="text-gray-300" style="font-family: var(--font-body);">Powering innovation with cutting-edge technology solutions</p>
+                            </div>
+                        </div>
+
+                        <!-- Duplicate set for seamless loop -->
+                        <div class="team-group-card">
+                            <div class="team-group-image">
+                                <img src="assets/images/teams/Creative Team.JPG" alt="Creative Team" class="w-full h-64 object-cover rounded-lg">
+                            </div>
+                            <div class="team-group-content p-6">
+                                <h3 class="text-2xl mb-2" style="font-family: var(--font-header);">Creative Team</h3>
+                                <p class="text-gray-300" style="font-family: var(--font-body);">Designing the future with innovative visuals and creative solutions</p>
+                            </div>
+                        </div>
+
+                        <div class="team-group-card">
+                            <div class="team-group-image">
+                                <img src="assets/images/teams/Marketing Team.JPG" alt="Marketing Team" class="w-full h-64 object-cover rounded-lg">
+                            </div>
+                            <div class="team-group-content p-6">
+                                <h3 class="text-2xl mb-2" style="font-family: var(--font-header);">Marketing Team</h3>
+                                <p class="text-gray-300" style="font-family: var(--font-body);">Spreading our message and building our community presence</p>
+                            </div>
+                        </div>
+
+                        <div class="team-group-card">
+                            <div class="team-group-image">
+                                <img src="assets/images/teams/Organizing Team.JPG" alt="Organizing Team" class="w-full h-64 object-cover rounded-lg">
+                            </div>
+                            <div class="team-group-content p-6">
+                                <h3 class="text-2xl mb-2" style="font-family: var(--font-header);">Organizing Team</h3>
+                                <p class="text-gray-300" style="font-family: var(--font-body);">Making events happen with precision and passion</p>
+                            </div>
+                        </div>
+
+                        <div class="team-group-card">
+                            <div class="team-group-image">
+                                <img src="assets/images/teams/PR Team.JPG" alt="PR Team" class="w-full h-64 object-cover rounded-lg">
+                            </div>
+                            <div class="team-group-content p-6">
+                                <h3 class="text-2xl mb-2" style="font-family: var(--font-header);">PR Team</h3>
+                                <p class="text-gray-300" style="font-family: var(--font-body);">Building relationships and managing our public image</p>
+                            </div>
+                        </div>
+
+                        <div class="team-group-card">
+                            <div class="team-group-image">
+                                <img src="assets/images/teams/Technical Team.JPG" alt="Technical Team" class="w-full h-64 object-cover rounded-lg">
+                            </div>
+                            <div class="team-group-content p-6">
+                                <h3 class="text-2xl mb-2" style="font-family: var(--font-header);">Technical Team</h3>
+                                <p class="text-gray-300" style="font-family: var(--font-body);">Powering innovation with cutting-edge technology solutions</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sponsors Section -->
+        <section id="sponsors" class="py-20 px-8 bg-[var(--bg-base)] relative page-section">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl md:text-6xl mb-4 neon-text-orange" style="font-family: var(--font-header);">
+                    Our Sponsors
+                </h2>
+                
+                <!-- Sponsors Marquee -->
+                <div class="sponsors-marquee-container">
+                    <div class="sponsors-marquee-track">
+                        <!-- First set of sponsors -->
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/RedBull - Beverage Partner.jpeg" alt="RedBull" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">RedBull</h4>
+                                <p class="sponsor-category">Beverage Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Apsara Ice Creams - Ice Cream Partner.jpeg" alt="Apsara Ice Creams" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Apsara Ice Creams</h4>
+                                <p class="sponsor-category">Ice Cream Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Love & Latte - Cafe Partner.jpeg" alt="Love & Latte" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Love & Latte</h4>
+                                <p class="sponsor-category">Cafe Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Bloovish - Beauty Partner.jpeg" alt="Bloovish" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Bloovish</h4>
+                                <p class="sponsor-category">Beauty Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Smaaash - Entertainment Partner.jpeg" alt="Smaaash" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Smaaash</h4>
+                                <p class="sponsor-category">Entertainment Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/No Escape - Entertainment Partner.jpeg" alt="No Escape" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">No Escape</h4>
+                                <p class="sponsor-category">Entertainment Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Rage Room - Entertainment Partner.jpeg" alt="Rage Room" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Rage Room</h4>
+                                <p class="sponsor-category">Entertainment Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Get My Fest - Media Partner.jpeg" alt="Get My Fest" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Get My Fest</h4>
+                                <p class="sponsor-category">Media Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Insightone - Media Partner.jpeg" alt="Insightone" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Insightone</h4>
+                                <p class="sponsor-category">Media Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Youth Inc. - Media Partner.jpeg" alt="Youth Inc." class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Youth Inc.</h4>
+                                <p class="sponsor-category">Media Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/interview buddy - Education Partner.jpeg" alt="Interview Buddy" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Interview Buddy</h4>
+                                <p class="sponsor-category">Education Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Atencion.jpeg" alt="Atencion" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Atencion</h4>
+                                <p class="sponsor-category">Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Kala Satika.jpeg" alt="Kala Satika" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Kala Satika</h4>
+                                <p class="sponsor-category">Partner</p>
+                            </div>
+                        </div>
+
+                        <!-- Duplicate set for seamless loop -->
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/RedBull - Beverage Partner.jpeg" alt="RedBull" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">RedBull</h4>
+                                <p class="sponsor-category">Beverage Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Apsara Ice Creams - Ice Cream Partner.jpeg" alt="Apsara Ice Creams" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Apsara Ice Creams</h4>
+                                <p class="sponsor-category">Ice Cream Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Love & Latte - Cafe Partner.jpeg" alt="Love & Latte" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Love & Latte</h4>
+                                <p class="sponsor-category">Cafe Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Bloovish - Beauty Partner.jpeg" alt="Bloovish" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Bloovish</h4>
+                                <p class="sponsor-category">Beauty Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Smaaash - Entertainment Partner.jpeg" alt="Smaaash" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Smaaash</h4>
+                                <p class="sponsor-category">Entertainment Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/No Escape - Entertainment Partner.jpeg" alt="No Escape" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">No Escape</h4>
+                                <p class="sponsor-category">Entertainment Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Rage Room - Entertainment Partner.jpeg" alt="Rage Room" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Rage Room</h4>
+                                <p class="sponsor-category">Entertainment Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Get My Fest - Media Partner.jpeg" alt="Get My Fest" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Get My Fest</h4>
+                                <p class="sponsor-category">Media Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Insightone - Media Partner.jpeg" alt="Insightone" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Insightone</h4>
+                                <p class="sponsor-category">Media Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Youth Inc. - Media Partner.jpeg" alt="Youth Inc." class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Youth Inc.</h4>
+                                <p class="sponsor-category">Media Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/interview buddy - Education Partner.jpeg" alt="Interview Buddy" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Interview Buddy</h4>
+                                <p class="sponsor-category">Education Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Atencion.jpeg" alt="Atencion" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Atencion</h4>
+                                <p class="sponsor-category">Partner</p>
+                            </div>
+                        </div>
+
+                        <div class="sponsor-card">
+                            <div class="sponsor-logo-container">
+                                <img src="assets/images/Sponsors/Kala Satika.jpeg" alt="Kala Satika" class="sponsor-logo">
+                            </div>
+                            <div class="sponsor-info">
+                                <h4 class="sponsor-name">Kala Satika</h4>
+                                <p class="sponsor-category">Partner</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about-us" class="min-h-screen py-20 px-8 bg-[var(--bg-base)] relative page-section text-center">
+            <div class="container mx-auto">
+        
+                <div class="max-w-3xl mx-auto">
+                     <h2 class="text-4xl md:text-6xl mb-4 neon-text-blue" style="font-family: var(--font-header);">
+                        Our Story
+                    </h2>
+                     <p class="about-element text-xl md:text-2xl mb-12 neon-text-blue" style="font-family: var(--font-body);">
+                        The Genesis of Innovation at KJSIT
+                    </p>
+                    <p class="about-element text-lg text-left md:text-center leading-relaxed mb-16">
+                        Born from a vision to create a hub for technical excellence, the IETE KJSIT chapter was founded by a small group of passionate students and faculty. Our initial goal was simple: to bridge the gap between classroom theory and real-world application, creating a space where curiosity could thrive and innovation had no limits.
+                    </p>
+                </div>
+        
+                <div id="stats-section" class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-20 text-center">
+                    <div class="about-element event-card p-6 rounded-lg shadow-lg neon-border-top">
+                        <h3 class="text-5xl font-bold text-white" style="font-family: var(--font-header);">
+                            <span class="stat-number" data-final-value="50">0</span>+
+                        </h3>
+                        <p class="text-gray-300 mt-2" style="font-family: var(--font-body);">Events Hosted</p>
+                    </div>
+                    <div class="about-element event-card p-6 rounded-lg shadow-lg neon-border-top">
+                        <h3 class="text-5xl font-bold text-white" style="font-family: var(--font-header);">
+                            <span class="stat-number" data-final-value="5000">0</span>+
+                        </h3>
+                        <p class="text-gray-300 mt-2" style="font-family: var(--font-body);">Participants Engaged</p>
+                    </div>
+                </div>
+        
+                <div class="max-w-5xl mx-auto">
+                    <h2 class="about-element text-3xl md:text-4xl mb-12" style="font-family: var(--font-header);">
+                        Our Guiding Pillars
+                    </h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                        <div class="about-element guiding-pillar-card-neon p-8 rounded-xl shadow-2xl flex flex-col items-center relative overflow-hidden">
+                            <div class="guiding-pillar-glow-effect"></div>
+                            <div class="guiding-pillar-image-container-neon mb-6 relative z-10">
+                                <img src="assets/images/Guiding Pillar/Priya Hankare.jpeg" alt="Dr. Priya Hankare - Faculty Coordinator" class="guiding-pillar-image-full">
+                                <div class="guiding-pillar-image-ring"></div>
+                            </div>
+                            <div class="text-center relative z-10">
+                                <h4 class="text-2xl mb-2 neon-text-orange" style="font-family: var(--font-header);">Dr. Priya Hankare</h4>
+                                <p class="text-lg neon-text-orange-subtitle" style="font-family: var(--font-body);">Faculty Co-ordinator</p>
+                                <div class="guiding-pillar-divider"></div>
+                            </div>
+                        </div>
+                        <div class="about-element guiding-pillar-card-neon p-8 rounded-xl shadow-2xl flex flex-col items-center relative overflow-hidden">
+                            <div class="guiding-pillar-glow-effect"></div>
+                            <div class="guiding-pillar-image-container-neon mb-6 relative z-10">
+                                <img src="assets/images/Guiding Pillar/EXTC HOD.jpeg" alt="Dr. Jayashree Khanapuri - HOD EXTC" class="guiding-pillar-image-full">
+                                <div class="guiding-pillar-image-ring"></div>
+                            </div>
+                            <div class="text-center relative z-10">
+                                <h4 class="text-2xl mb-2 neon-text-orange" style="font-family: var(--font-header);">Dr. Jayashree Khanapuri</h4>
+                                <p class="text-lg neon-text-orange-subtitle" style="font-family: var(--font-body);">HOD, EXTC Department</p>
+                                <div class="guiding-pillar-divider"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="max-w-4xl mx-auto mt-20">
+                    <h2 class="about-element text-3xl md:text-4xl mb-8 neon-text-blue" style="font-family: var(--font-header);">
+                        Join Our Family
+                    </h2>
+                    <p class="about-element text-lg leading-relaxed mb-8">
+                        We are more than a committee; we are a community. A diverse family of creators, problem-solvers, and leaders, united by a shared passion for technology. Together, we learn, build, and grow.
+                    </p>
+                    <img src="assets/images/teams/Family Image.jpeg" alt="IETE KJSIT Team Photo" class="about-element w-full rounded-lg shadow-2xl">
+                </div>
+        
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer id="footer" class="relative">
+
+        <div class="footer-main-content">
+            <!-- Modern Footer Layout -->
+            <div class="footer-modern">
+                <!-- Top Section -->
+                <div class="footer-top">
+                    <div class="footer-brand">
+                        <div class="footer-brand-text">
+                            <h2 class="footer-title">IETE KJSIT</h2>
+                        </div>
+                        <div class="footer-logo-container">
+                            <a href="https://ietekjsit.in/" target="_blank" rel="noopener noreferrer">
+                                <img src="assets/images/IETE_Logo.png" alt="IETE Logo" class="footer-brand-logo">
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Vertical Divider -->
+                    <div class="footer-vertical-divider"></div>
+                    
+                    <div class="footer-nav">
+                        <div class="footer-nav-section">
+                            <h4 class="footer-nav-title">Quick Links</h4>
+                            <ul class="footer-nav-list">
+                                <li><a href="#welcome-screen" class="footer-nav-link">Home</a></li>
+                                <li><a href="#renaissance" class="footer-nav-link">Renaissance</a></li>
+                                <li><a href="#events" class="footer-nav-link">Events</a></li>
+                                <li><a href="#team" class="footer-nav-link">Team</a></li>
+                                <li><a href="#about-us" class="footer-nav-link">About</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="footer-social-section">
+                            <h4 class="footer-nav-title">Follow Us</h4>
+                            <div class="footer-social-links">
+                                <a href="https://www.linkedin.com/company/iete-kjsit/" target="_blank" rel="noopener noreferrer" class="footer-social-link">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn" class="social-icon">
+                                    <span>LinkedIn</span>
+                                </a>
+                                <a href="https://www.instagram.com/iete_kjsit?igsh=c3phcnR3aTFvM241" target="_blank" rel="noopener noreferrer" class="footer-social-link">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" class="social-icon">
+                                    <span>Instagram</span>
+                                </a>
+                            </div>
+                            
+                            <div class="footer-contact-section">
+                                <h4 class="footer-nav-title">Contact Us</h4>
+                                <div class="footer-contact-info">
+                                    <div class="contact-item">
+                                        <div class="contact-icon">📧</div>
+                                        <div class="contact-details">
+                                            <div class="contact-label">Email</div>
+                                            <div class="contact-value">iete.tech@somaiya.edu</div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <div class="footer-gradient-divider"></div>
+                <p class="footer-copyright">
+                    © 2025-2026 IETE KJSIT. All rights reserved.<br>
+                    Institution of Electronics and Telecommunication Engineers - K. J Somaiya Institute of Technology
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/ScrollToPlugin.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/Observer.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="animations.js"></script>
+    <script src="script.js"></script>
+
+</body>
+</html>
