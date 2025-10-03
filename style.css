@@ -2396,12 +2396,29 @@ body {
     width: 200%; /* Double width to accommodate duplicates */
 }
 
+/* Mobile Marquee Optimization */
+@media (max-width: 768px) {
+    .marquee-track {
+        animation: marquee-mobile 15s linear infinite;
+    }
+}
+
 .marquee-track:hover {
     animation-play-state: paused;
 }
 
 /* Infinite Marquee Animation */
 @keyframes marquee {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Mobile Marquee Animation - Faster */
+@keyframes marquee-mobile {
     0% {
         transform: translateX(0%);
     }
@@ -2420,6 +2437,16 @@ body {
     }
 }
 
+/* Mobile Reverse Marquee Animation - Faster */
+@keyframes marquee-reverse-mobile {
+    0% {
+        transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+}
+
 /* Reverse marquee track */
 .marquee-reverse .marquee-track {
     animation: marquee-reverse 30s linear infinite;
@@ -2427,6 +2454,13 @@ body {
     gap: 1rem !important;
     align-items: center !important;
     width: 200% !important; /* Double width to accommodate duplicates */
+}
+
+/* Mobile Reverse Marquee Optimization */
+@media (max-width: 768px) {
+    .marquee-reverse .marquee-track {
+        animation: marquee-reverse-mobile 15s linear infinite;
+    }
 }
 
 /* Debug: Make marquee track visible */
@@ -2771,11 +2805,28 @@ body {
     width: 200%;
 }
 
+/* Mobile Sponsors Marquee Optimization */
+@media (max-width: 768px) {
+    .sponsors-marquee-track {
+        animation: sponsorsMarquee-mobile 20s linear infinite;
+    }
+}
+
 .sponsors-marquee-track:hover {
     animation-play-state: paused;
 }
 
 @keyframes sponsorsMarquee {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Mobile Sponsors Marquee Animation - Faster */
+@keyframes sponsorsMarquee-mobile {
     0% {
         transform: translateX(0%);
     }
@@ -3246,11 +3297,24 @@ body {
     width: 200%; /* Double width to accommodate duplicates */
 }
 
+/* Mobile Subcore Marquee Optimization */
+@media (max-width: 768px) {
+    .subcore-marquee-track {
+        animation: subcore-marquee-mobile 15s linear infinite;
+    }
+}
+
 .subcore-marquee-track:hover {
     animation-play-state: paused;
 }
 
 @keyframes subcore-marquee {
+    0% { transform: translateX(-50%); }
+    100% { transform: translateX(0%); }
+}
+
+/* Mobile Subcore Marquee Animation - Faster */
+@keyframes subcore-marquee-mobile {
     0% { transform: translateX(-50%); }
     100% { transform: translateX(0%); }
 }
